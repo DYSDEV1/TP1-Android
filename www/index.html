@@ -1,0 +1,35 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <!-- CSP tuned for development to allow raw.githubusercontent.com images -->
+  <meta http-equiv="Content-Security-Policy"
+        content="default-src 'self' data: gap: https://raw.githubusercontent.com https://*.githubusercontent.com https:; 
+                 img-src 'self' data: https://raw.githubusercontent.com https://*.githubusercontent.com https:; 
+                 style-src 'self' 'unsafe-inline' https:; 
+                 script-src 'self' 'unsafe-inline' 'unsafe-eval' https:;">
+  <title>TP1 - Cordova Pokémon</title>
+
+  <link rel="manifest" href="manifest.json">
+  <link rel="stylesheet" href="css/styles.css" />
+</head>
+<body>
+  <header class="app-header">
+    <h1>Liste de Pokémons</h1>
+  </header>
+
+  <main id="app" class="app-container">
+    <div id="pokemon-list" class="pokemon-list"></div>
+  </main>
+
+  <footer class="app-footer">
+    <small>TP1 — Cordova + HTML/CSS/JS</small>
+  </footer>
+
+  <!-- Cordova script is injected at runtime on device; safe to include for web testing -->
+  <script src="cordova.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>

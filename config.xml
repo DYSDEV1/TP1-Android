@@ -1,0 +1,25 @@
+<?xml version='1.0' encoding='utf-8'?>
+<widget id="io.cordova.tp1" version="1.0.0"
+        xmlns="http://www.w3.org/ns/widgets"
+        xmlns:cdv="http://cordova.apache.org/ns/1.0">
+  <name>TP1 Cordova</name>
+  <description>TP1 — Cordova app that lists Pokémons (image, title, category, evolution, actions)</description>
+  <author email="dev@example.com" href="http://example.com">TP1 Dev</author>
+
+  <!-- Start page -->
+  <content src="index.html" />
+
+  <!-- Allow all origins during development (tighten in production) -->
+  <access origin="*" />
+  <allow-navigation href="*" />
+  <allow-intent href="http://*/*" />
+  <allow-intent href="https://*/*" />
+
+  <!-- Whitelist plugin (Cordova will install it when you add the plugin) -->
+  <plugin name="cordova-plugin-whitelist" spec="1" />
+
+  <!-- Optional preferences (tweak as needed) -->
+  <preference name="Fullscreen" value="false" />
+  <preference name="Orientation" value="portrait" />
+  <preference name="AndroidPersistentFileLocation" value="Internal" />
+</widget>

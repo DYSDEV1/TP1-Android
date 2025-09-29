@@ -1,0 +1,8 @@
+{
+  "name": "TP1 Cordova",
+  "short_name": "TP1",
+  "start_url": "index.html",
+  "display": "standalone",
+  "background_color": "#f7f7fb",
+  "theme_color": "#ef5350"
+}
