@@ -1,24 +1,43 @@
-:root{
+/* Base variables */
+:root {
   --bg: #f7f7fb;
   --card: #ffffff;
   --accent: #ef5350;
+  --accent-light: #ffdede;
   --text: #222;
   --muted: #666;
   --radius: 12px;
-  --shadow: 0 6px 18px rgba(0,0,0,0.08);
-  font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+  --shadow: 0 6px 18px rgba(0, 0, 0, 0.08);
+  --font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
 }
 
-* { box-sizing: border-box; }
-html,body { height: 100%; margin: 0; padding: 0; background: var(--bg); color: var(--text); }
+* {
+  box-sizing: border-box;
+}
 
+html, body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--font-family);
+}
+
+/* Header */
 .app-header {
-  padding: 18px 16px;
-  background: linear-gradient(90deg,#ffffff,#fafafa);
+  padding: 16px;
+  background: linear-gradient(90deg, #ffffff, #fafafa);
   border-bottom: 1px solid #eee;
   text-align: center;
 }
-.app-header h1 { margin: 0; font-size: 20px; }
+.app-header h1 {
+  margin: 0;
+  font-size: 1.5rem;
+}
+.app-header button {
+  margin-top: 8px;
+}
 
 /* Container */
 .app-container {
@@ -26,11 +45,11 @@ html,body { height: 100%; margin: 0; padding: 0; background: var(--bg); color: v
   min-height: calc(100vh - 120px);
 }
 
-/* Lista */
+/* Pokémon list */
 .pokemon-list {
   display: flex;
   flex-direction: column;
-  gap: 14px;
+  gap: 16px;
   max-width: 900px;
   margin: 0 auto;
 }
@@ -44,9 +63,13 @@ html,body { height: 100%; margin: 0; padding: 0; background: var(--bg); color: v
   box-shadow: var(--shadow);
   overflow: hidden;
   border: 1px solid #eee;
+  transition: transform 0.15s ease;
+}
+.pokemon-card:hover {
+  transform: translateY(-2px);
 }
 
-/* Image area */
+/* Image */
 .pokemon-card .image {
   position: relative;
   width: 100%;
@@ -62,8 +85,6 @@ html,body { height: 100%; margin: 0; padding: 0; background: var(--bg); color: v
   max-height: 100%;
   object-fit: contain;
 }
-
-/* Overlay title */
 .pokemon-card .image .overlay {
   position: absolute;
   left: 0;
@@ -73,7 +94,7 @@ html,body { height: 100%; margin: 0; padding: 0; background: var(--bg); color: v
   color: white;
   font-weight: 600;
   text-shadow: 0 2px 6px rgba(0,0,0,0.45);
-  font-size: 18px;
+  font-size: 1.1rem;
 }
 
 /* Content */
@@ -82,12 +103,12 @@ html,body { height: 100%; margin: 0; padding: 0; background: var(--bg); color: v
 }
 .pokemon-card .category {
   color: var(--muted);
-  font-size: 13px;
+  font-size: 0.9rem;
 }
 .pokemon-card .evolution {
   margin-top: 6px;
   font-weight: 600;
-  font-size: 14px;
+  font-size: 0.95rem;
 }
 
 /* Actions */
@@ -99,24 +120,91 @@ html,body { height: 100%; margin: 0; padding: 0; background: var(--bg); color: v
 }
 .btn {
   padding: 8px 12px;
-  border-radius: 10px;
+  border-radius: var(--radius);
   border: none;
   cursor: pointer;
   font-weight: 600;
-  font-size: 14px;
+  font-size: 0.9rem;
+  transition: background 0.2s;
 }
 .btn--primary {
   background: var(--accent);
   color: white;
   box-shadow: 0 6px 12px rgba(239,83,80,0.12);
 }
+.btn--primary:hover {
+  background: #d94343;
+}
 .btn--secondary {
   background: #f4f4f6;
-  color: #222;
+  color: var(--text);
+}
+.btn--secondary:hover {
+  background: #eaeaea;
 }
 
-/* responsiveness */
-@media (max-width: 420px) {
-  .pokemon-card .image { height: 120px; }
-  .pokemon-card .image .overlay { font-size: 16px; }
+/* Footer */
+.app-footer {
+  padding: 12px;
+  text-align: center;
+  font-size: 0.8rem;
+  color: var(--muted);
+  border-top: 1px solid #eee;
+  background: #fafafa;
+}
+
+/* Quiz modal */
+#tp-quiz-modal {
+  position: fixed;
+  inset: 0;
+  display: none; /* show/hide via JS */
+  align-items: center;
+  justify-content: center;
+  background: rgba(0,0,0,0.5);
+  z-index: 2000;
+  padding: 16px;
+}
+
+.tp-quiz-card {
+  max-width: 600px;
+  width: 100%;
+  background: var(--card);
+  border-radius: var(--radius);
+  padding: 18px;
+  box-shadow: 0 8px 36px rgba(0,0,0,0.25);
+}
+
+.tp-quiz-card h2 {
+  margin: 0 0 12px 0;
+}
+
+.tp-quiz-card button {
+  border-radius: 8px;
+  border: none;
+  cursor: pointer;
+  padding: 8px 12px;
+  font-weight: 600;
+}
+
+.tp-quiz-card input[type="text"] {
+  width: 100%;
+  padding: 8px;
+  border-radius: 8px;
+  border: 1px solid #ddd;
+}
+
+/* Responsive */
+@media (max-width: 480px) {
+  .pokemon-card .image {
+    height: 120px;
+  }
+  .pokemon-card .image .overlay {
+    font-size: 1rem;
+  }
+  .btn {
+    font-size: 0.85rem;
+  }
+  .tp-quiz-card {
+    padding: 12px;
+  }
 }
